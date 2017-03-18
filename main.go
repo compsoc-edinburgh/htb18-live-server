@@ -40,6 +40,9 @@ func ws(h *Hub) {
 	http.HandleFunc("/stream/thisiamoausodmusdojads",
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+			if r.FormValue("channel_name") != "organisers" {
+				return
+			}
 			text := r.FormValue("text")
 			h.broadcast <- []byte(text)
 		},
