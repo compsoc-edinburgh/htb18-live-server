@@ -40,7 +40,7 @@ func ws(h *Hub) {
 	http.HandleFunc("/stream/thisiamoausodmusdojads",
 		func(w http.ResponseWriter, r *http.Request) {
 			// fmt.Printf("it's %s\n", r.FormValue("channel_id"))
-			if r.FormValue("channel_id") != "G3WAFT997" {
+			if r.FormValue("channel_id") != "C4LAC4H51" {
 				fmt.Fprintf(w, "No.")
 				return
 			}
