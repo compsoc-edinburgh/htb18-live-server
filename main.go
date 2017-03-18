@@ -40,7 +40,9 @@ func ws(h *Hub) {
 	http.HandleFunc("/stream/thisiamoausodmusdojads",
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-			h.broadcast <- []byte(r.Form.Get("text"))
+			text := r.Form.Get("text")
+			fmt.Printf("Outputting: %s\n", text)
+			h.broadcast <- []byte(text)
 		},
 	)
 	err := http.ListenAndServe(*wsaddr, nil)
