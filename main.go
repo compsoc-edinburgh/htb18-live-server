@@ -30,7 +30,7 @@ func ws(h *Hub) {
 
 	http.HandleFunc("/stream/", func(w http.ResponseWriter, r *http.Request) {
 
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+		fmt.Fprintf(w, "Hello, \"%q\"", html.EscapeString(r.URL.Path))
 	})
 
 	http.HandleFunc("/stream/ws", func(w http.ResponseWriter, r *http.Request) {
