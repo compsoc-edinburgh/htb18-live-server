@@ -28,16 +28,16 @@ func main() {
 
 func ws(h *Hub) {
 
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/stream/", func(w http.ResponseWriter, r *http.Request) {
 
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
 	})
 
-	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/stream/ws", func(w http.ResponseWriter, r *http.Request) {
 		serveWs(h, w, r)
 	})
 
-	http.HandleFunc("/thisiamoausodmusdojads",
+	http.HandleFunc("/stream/thisiamoausodmusdojads",
 		func(w http.ResponseWriter, r *http.Request) {
 			h.broadcast <- []byte(r.Form.Get("text"))
 		},
