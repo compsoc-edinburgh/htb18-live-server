@@ -45,7 +45,7 @@ func ws(h *Hub) {
 				return
 			}
 			text := r.FormValue("text")
-			fmt.Fprintf(w, "Message %s sent.")
+			fmt.Fprintf(w, "Message %s sent.", text)
 			h.broadcast <- []byte(text)
 		},
 	)
