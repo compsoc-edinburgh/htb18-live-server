@@ -8,7 +8,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 )
 
 var wsaddr = flag.String("ws", ":8080", "websocket address")
@@ -41,12 +40,7 @@ func ws(h *Hub) {
 	http.HandleFunc("/stream/thisiamoausodmusdojads",
 		func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-			text := r.Form.Get("text")
-			fmt.Printf("Outputting: %s\n", text)
-			for k, v := range r.Form {
-				fmt.Println("key:", k)
-				fmt.Println("val:", strings.Join(v, ""))
-			}
+			text := r.FormValue("text")
 			h.broadcast <- []byte(text)
 		},
 	)
