@@ -31,7 +31,7 @@ func newHub() *Hub {
 	}
 }
 
-var lastMessage = []byte("There’s still plenty of pizza!")
+var lastMessage = []byte("")
 
 func (h *Hub) run() {
 	for {
